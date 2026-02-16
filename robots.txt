@@ -1,0 +1,16 @@
+# Kwikey Locksmith - robots.txt
+# https://kwikeylocksmith.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://kwikeylocksmith.com/sitemap-index.xml
+
+# Block sensitive paths
+Disallow: /api/
+Disallow: /thank-you
+Disallow: /style-guide
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

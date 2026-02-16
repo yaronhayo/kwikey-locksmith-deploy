@@ -1,0 +1,23 @@
+# Astro Static Site Routing & Security
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Ensure index.html is the entry point
+  RewriteRule ^index\.html$ - [L]
+
+  # If the request matches a file or directory, serve it
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Otherwise, serve the main index.html (handles Astro's clean URLs)
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Basic Security Headers (Fallback if PHP fails to send them)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "DENY"
+</IfModule>
